@@ -19,10 +19,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "connect-flash": "^0.1.1",
+    "connect-mongodb-session": "^3.1.1",
     "dotenv": "^16.0.3",
     "dotenv-safe": "^8.2.0",
     "ejs": "^3.1.8",
-    "express": "^4.18.2",
+    "express": "^4.17.1",
+    "express-session": "^1.17.3",
     "mongoose": "^6.9.2",
     "morgan": "^1.10.0"
   },
