@@ -1,0 +1,21 @@
+<%- include('header') -%>
+
+<h1>List cats</h1>
+
+<% if (cats.length == 0) { %>
+    <p>No cats exists</p>
+<% } else { %>
+
+    <ul>
+    <% for (let i = 0; i < cats.length; i++) { %>
+        <li><%= `${cats[i].name} (${cats[i]._id})` %></li>
+    <% } %>
+    </ul>
+<% } %>
+
+<h2>Debug</h2>
+<pre>
+<%- JSON.stringify(cats, null, 2) %>
+</pre>
+
+<%- include('footer') -%>
