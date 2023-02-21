@@ -4,38 +4,122 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" href="css/html.css">
     <link rel="stylesheet" href="css/html.css">
-    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/header.css"> -->
+    <style>
+        /* Style for the body of the page */
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style for the main section */
+        .main {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Style for the headline */
+        .headline {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Style for the single snippet */
+        .single {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Style for the snippet container */
+        .div1 {
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+            padding: 10px;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        /* Style for the snippet tag */
+        .par {
+            font-weight: bold;
+        }
+
+        /* Style for the snippet code */
+        .snippet {
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow: auto;
+            max-height: 400px;
+            padding: 10px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        /* Style for the snippet metadata */
+        .line {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Style for the snippet title and author */
+        .line span {
+            font-weight: bold;
+        }
+
+        /* Style for the snippet date */
+        .line span:last-of-type {
+            float: right;
+        }
+    </style>
     <title>Home</title>
 </head>
+
 <body class="body">
     <%- include('../partials/panel_header.ejs') %>
 
 
-    <main id="main" class="main">
-        <h2 class="headline">Results:</h2>
-            <% if (result.length > 0) { %>
-                <% result.forEach(snippet => { %>
-            <a class="single" href="/snippets/<%= snippet._id %>">
-                <div class="div1">
-                    <p class="line"> TAG: <span class="par"><%= snippet.tag %>  </span> </p>
-                    <pre class="snippet"> <%= snippet.snippet %> </pre>
-                    <p class="line"> Title: <span style="text-transform:uppercase"><%= snippet.title %></span> </p>
-                    <p class="line"> Author: <span style="text-transform:uppercase"><%= snippet.author %></span> </p>
-                    <p class="line"> Created At: <span style="text-transform:uppercase"><%= snippet.createdAt %></span> </p>
-                    <p class="line"> Updated At: <span style="text-transform:uppercase"><%= snippet.updatedAt %></span> </p>
-                </div>
-            </a>
-               <% }) %>
-            <% } else { %>
-            <div class="div1">
-                <p class="line"> There is no match!</p>
-            </div>
-            <% } %>
-    </main>
+        <main id="main" class="main">
+            <h2 class="headline">Results:</h2>
+            <% if (result.length> 0) { %>
+                <% result.forEach(snippet=> { %>
+                    <a class="single" href="/snippets/<%= snippet._id %>">
+                        <div class="div1">
+                            <p class="line"> TAG: <span class="par">
+                                    <%= snippet.tag %>
+                                </span> </p>
+                            <pre class="snippet"> <%= snippet.snippet %> </pre>
+                            <p class="line"> Title: <span style="text-transform:uppercase">
+                                    <%= snippet.title %>
+                                </span> </p>
+                            <p class="line"> Author: <span style="text-transform:uppercase">
+                                    <%= snippet.author %>
+                                </span> </p>
+                            <p class="line"> Created At: <span style="text-transform:uppercase">
+                                    <%= snippet.createdAt %>
+                                </span> </p>
+                            <p class="line"> Updated At: <span style="text-transform:uppercase">
+                                    <%= snippet.updatedAt %>
+                                </span> </p>
+                        </div>
+                    </a>
+                    <% }) %>
+                        <% } else { %>
+                            <div class="div1">
+                                <p class="line"> There is no match!</p>
+                            </div>
+                            <% } %>
+        </main>
 </body>
 
 </html>

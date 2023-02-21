@@ -16,14 +16,13 @@ import edit from './routes/editRouter.js'
 import search from './routes/searchRouter.js'
 import DB from './mongoose.js'
 import flash from 'connect-flash'
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'url'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 const app = express()
 
-app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.set('view engine', 'ejs')
 DB.connect().then(() => {}).catch((err) => {
