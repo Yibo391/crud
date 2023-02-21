@@ -8,6 +8,7 @@ import MongoDBSession from 'connect-mongodb-session'
 import path from 'path'
 import logger from 'morgan'
 import home from './routes/homeRouter.js'
+import signup from './routes/signupRouter.js'
 import signin from './routes/signinRouter.js'
 import addSnippet from './routes/addRouter.js'
 import signout from './routes/signoutRouter.js'
@@ -15,8 +16,14 @@ import edit from './routes/editRouter.js'
 import search from './routes/searchRouter.js'
 import DB from './mongoose.js'
 import flash from 'connect-flash'
+import { fileURLToPath } from 'url';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const app = express()
+
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.set('view engine', 'ejs')
 DB.connect().then(() => {}).catch((err) => {

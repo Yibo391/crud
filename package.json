@@ -19,8 +19,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "connect-flash": "^0.1.1",
     "connect-mongodb-session": "^3.1.1",
+    "csurf": "^1.11.0",
     "dotenv": "^16.0.3",
     "dotenv-safe": "^8.2.0",
     "ejs": "^3.1.8",

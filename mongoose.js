@@ -28,7 +28,6 @@ async function connect () {
   })
 
   return mong.connect(DB, {
-    useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
