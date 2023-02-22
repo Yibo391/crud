@@ -54,5 +54,4 @@ signupController.post = async (req, res) => {
   }
 }
 
-
 module.exports = signupController

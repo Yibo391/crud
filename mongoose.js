@@ -1,31 +1,29 @@
+const mongoose = require('mongoose')
 
-const mong = require('mongoose')
-const DB = 'mongodb://root:secret@127.0.0.1/a?authSource=admin'
+const DB_URL = 'mongodb://root:secret@127.0.0.1/a?authSource=admin'
 
-/**
- * Exporting the function.
- */
-exports.connect = connect
+const db = mongoose.connection
 
-/**
- * It initializes the database.
- *
- * @returns {object} DB connection.
- */
-async function connect () {
-  mong.connection.on('connected', () => console.log('Running'))
-  mong.connection.on('error', () => console.log('ERROR'))
-  mong.connection.on('disconnected', () => console.log('DISCONNECT'))
+db.on('connected', () => console.log('MongoDB connected!'))
+db.on('error', (error) => console.error('MongoDB connection error:', error))
+db.on('disconnected', () => console.log('MongoDB disconnected!'))
 
-  process.on('SIGNIN', () => {
-    mong.connection.close(() => {
-      console.log('Connection is closed!')
-      process.exit(0)
+process.on('SIGINT', () => {
+  db.close(() => {
+    console.log('MongoDB connection closed!')
+    process.exit(0)
+  })
+})
+
+exports.connect = async () => {
+  try {
+    await mongoose.connect(DB_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
     })
-  })
-
-  return mong.connect(DB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
+    console.log('MongoDB connection successful!')
+  } catch (error) {
+    console.error('MongoDB connection error:', error)
+    process.exit(1)
+  }
 }
