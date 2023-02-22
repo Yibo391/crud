@@ -5,13 +5,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Web site created using create-snowpack-app" />
-  <!-- <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link rel="stylesheet" href="css/html.css">
-        <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/header.css">
-        <link rel="stylesheet" href="css/style_form.css">
-        <link rel="stylesheet" href="css/html.css"> -->
   <style>
     body {
       font-family: 'PT Serif', serif;
@@ -105,13 +98,45 @@
     header h1 a {
       color: #fff;
     }
+
+    .header {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+    }
+
+    .items {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .items a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .items a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
   </style>
   <title>Sign-up</title>
 </head>
 
 <body>
-  <%- include('../partials/header.ejs') %>
-  <% if (message.length> 0) { %>
+  <div class="header">
+    <div class="items">
+      <a href="/sign-in">Sign-in</a>
+      <a href="/sign-up">Sign-up</a>
+      <a href="/">Home</a>
+    </div>
+  </div> <% if (message.length> 0) { %>
   <div class="div2">
     <p class="line">
       <%= message %>

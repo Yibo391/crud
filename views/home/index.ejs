@@ -4,12 +4,6 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="css/index.css" />
-  <link rel="stylesheet" href="css/html.css">
-  <link rel="stylesheet" href="css/html.css">
-  <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/bar.css"> -->
   <style>
     /* index.css */
 
@@ -86,13 +80,45 @@
       white-space: pre-wrap;
       word-wrap: break-word;
     }
+
+    .header {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+    }
+
+    .items {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .items a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .items a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
   </style>
   <title>Home</title>
 </head>
 
 <body class="body">
-  <%- include('../partials/header.ejs') %>
-
+  <div class="header">
+    <div class="items">
+      <a href="/sign-in">Sign-in</a>
+      <a href="/sign-up">Sign-up</a>
+      <a href="/">Home</a>
+    </div>
+  </div>
   <main id="main" class="main">
     <h2 class="headline">Snippets</h2>
     <% if (result.length> 0) { %>

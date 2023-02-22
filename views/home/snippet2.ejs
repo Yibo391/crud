@@ -4,9 +4,6 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- <link rel="stylesheet" type="text/css" href="../css/index.css" />
-    <link rel="stylesheet" href="../css/html.css">
-    <link rel="stylesheet" href="../css/header.css"> -->
   <style>
     body {
       background-color: #F2F2F2;
@@ -109,12 +106,45 @@
     .snippet .btn-container a:hover {
       background-color: #0052CC;
     }
+
+    .header {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+    }
+
+    .items {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .items a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .items a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
   </style>
   <title>Snippet</title>
 </head>
 
 <body class="body">
-  <%- include('../partials/panel_header.ejs') %>
+  <div class="header">
+    <div class="items">
+      <a href="/signout">Signout</a>
+      <a href="/add-snippet">Add Snippets</a>
+      <a href="/">Home</a>
+    </div>
+  </div>
   <main id="main" class="main">
     <div class="div1">
       <p class="line"> TAG: <span class="par">

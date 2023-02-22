@@ -8,12 +8,9 @@ homeController.index = async (req, res) => {
   try {
     const result = await Snippet.find()
     const isAuth = req.session?.isAuth || false
+    const viewName = isAuth ? 'home/panel' : 'home/index'
 
-    if (isAuth) {
-      res.render('home/panel', { result })
-    } else {
-      res.render('home/index', { result })
-    }
+    res.render(viewName, { result })
   } catch (error) {
     console.log(error)
   }
@@ -25,23 +22,25 @@ homeController.indexGetSnippet = async (req, res) => {
     const isAuth = req.session?.isAuth || false
     const userID = req.session?.userID
 
-    if (!isAuth) {
-      res.status(403)
-      return res.render('forbidden/forbidden')
+    const errorPages = {
+      403: 'forbidden/forbidden',
+      404: 'notfound/notfound'
     }
 
     const snipp = await Snippet.findById(id)
 
     if (!snipp) {
       res.status(404)
-      return res.render('notfound/notfound')
+      return res.render(errorPages[404])
     }
 
-    if (userID.equals(snipp.ownerID)) {
-      res.render('home/snippet', { snippet: snipp })
-    } else {
-      res.render('home/snippet2', { snippet: snipp })
+    if (!isAuth) {
+      res.status(403)
+      return res.render(errorPages[403])
     }
+
+    const viewName = userID.equals(snipp.ownerID) ? 'home/snippet' : 'home/snippet2'
+    res.render(viewName, { snippet: snipp })
   } catch (error) {
     console.log(error)
   }
@@ -49,29 +48,31 @@ homeController.indexGetSnippet = async (req, res) => {
 
 homeController.indexDeleteSnippet = async (req, res) => {
   try {
+    console.log('new1')
     const id = req.params.id
+    // eslint-disable-next-line no-unused-vars
     const isAuth = req.session?.isAuth || false
     const userID = req.session?.userID
 
-    if (!isAuth) {
-      res.status(403)
-      return res.render('forbidden/forbidden')
+    const errorPages = {
+      403: 'forbidden/forbidden',
+      404: 'notfound/notfound'
     }
 
     const snippet = await Snippet.findById(id)
 
     if (!snippet) {
       res.status(404)
-      return res.render('notfound/notfound')
+      return res.render(errorPages[404])
     }
 
-    if (userID.equals(snippet.ownerID)) {
-      await snippet.delete()
-      res.json({ redirect: '/snippets' })
-    } else {
+    if (!userID.equals(snippet.ownerID)) {
       res.status(403)
-      return res.render('forbidden/forbidden')
+      return res.render(errorPages[403])
     }
+
+    await snippet.delete()
+    res.json({ redirect: '/snippets' })
   } catch (error) {
     console.log(error)
   }

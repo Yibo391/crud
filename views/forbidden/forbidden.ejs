@@ -1,17 +1,41 @@
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Web site created using create-snowpack-app" />
-    <!-- <link rel="stylesheet" type="text/css" href="/css/index.css" />
- <link rel="stylesheet" href="/css/header.css">
- <link rel="stylesheet" href="/css/html.css"> -->
-    <title>Page Not Found</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Web site created using create-snowpack-app" />
+
+  <title>Page Not Found</title>
+  <style>
+    .header {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+    }
+
+    .items {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .items a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+  </style>
 </head>
 
 <body>
-    <%- include('../partials/default.ejs') %>
-        <h1>Forbidden!</h1>
-        <h2 class="h">Only Authenticated people can access this page!.</h2>
+  <div class="header">
+    <div class="items">
+      <a href="/">Home</a>
+    </div>
+  </div>
+  <h1>Forbidden!</h1>
+  <h2 class="h">Only Authenticated people can access this page!.</h2>
 </body>
 
 </html>
