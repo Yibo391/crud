@@ -76,6 +76,8 @@
             border-radius: 4px;
             padding: 20px;
             margin-bottom: 20px;
+            overflow: auto;
+            /* add overflow property */
         }
 
         .snippet {
@@ -87,7 +89,10 @@
             padding: 10px;
             border-radius: 4px;
             margin-bottom: 10px;
+            overflow: auto;
+            /* add overflow property */
         }
+
 
         .line {
             margin: 0;
@@ -114,7 +119,7 @@
             <% if (result.length> 0) { %>
                 <% result.forEach(snippet=> { %>
                     <div class="div1">
-                        <p class="line"> TAG: <span style="text-transform:uppercase">
+                        <p class="line"> Tag: <span style="text-transform:uppercase">
                                 <%= snippet.tag %>
                             </span> </p>
                         <pre class="snippet"> <%= snippet.snippet %> </pre>
@@ -124,11 +129,11 @@
                         <p class="line"> Author: <span style="text-transform:uppercase">
                                 <%= snippet.author %>
                             </span> </p>
-                        <p class="line"> Created At: <span style="text-transform:uppercase">
-                                <%= snippet.createdAt %>
+                        <p class="line"> Created At: <span>
+                                <%= new Date(snippet.createdAt).toLocaleString() %>
                             </span> </p>
-                        <p class="line"> Updated At: <span style="text-transform:uppercase">
-                                <%= snippet.updatedAt %>
+                        <p class="line"> Updated At: <span>
+                                <%= new Date(snippet.updatedAt).toLocaleString() %>
                             </span> </p>
                     </div>
                     <% }) %>

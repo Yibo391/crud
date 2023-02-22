@@ -1,7 +1,4 @@
-/**
- * @author Jacob Yousif
- * A Database connection.
- */
+
 const mong = require('mongoose')
 const DB = 'mongodb://root:secret@127.0.0.1/a?authSource=admin'
 

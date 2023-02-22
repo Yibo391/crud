@@ -1,7 +1,4 @@
-/**
- * @author Jacob Yousif
- * A scema model for the Snippet.
- */
+
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 

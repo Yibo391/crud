@@ -1,8 +1,3 @@
-/**
- * @author Jacob Yousif
- * A router for the edit form.
- */
-'use strict'
 
 const express = require('express')
 const router = express.Router()
