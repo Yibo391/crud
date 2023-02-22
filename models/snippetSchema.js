@@ -1,30 +1,29 @@
-
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const { Schema } = mongoose
 
-const sinppetSchema = new Schema({
+const snippetSchema = new Schema({
   tag: {
     type: String,
-    required: true,
+    required: [true, 'Tag is required'],
     uppercase: true
   },
   title: {
     type: String,
-    required: true
+    required: [true, 'Title is required']
   },
   author: {
     type: String,
-    required: true
+    required: [true, 'Author is required']
   },
   snippet: {
     type: String,
-    required: true
+    required: [true, 'Snippet content is required']
   },
   ownerID: {
     type: String,
-    required: true
+    required: [true, 'Owner ID is required']
   }
 }, { timestamps: true })
 
-const SNIPPET = mongoose.model('SNIPPET', sinppetSchema)
-module.exports = SNIPPET
+const Snippet = mongoose.model('Snippet', snippetSchema)
+module.exports = Snippet
