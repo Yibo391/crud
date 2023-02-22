@@ -1,5 +1,4 @@
 /**
- * @author Jacob Yousif
  * A controller for the signout form.
  */
 
@@ -8,11 +7,10 @@
 const signoutController = {}
 
 /**
- * This method it responds to the GET request when
- * the user wans to signout.
+ * Responds to the GET request when the user wants to sign out.
  *
- * @param {object} req the Express request.
- * @param {object} res the Express response.
+ * @param {object} req The Express request.
+ * @param {object} res The Express response.
  */
 signoutController.get = async (req, res) => {
   try {

@@ -10,7 +10,7 @@
   <style>
     body {
       background-color: #F2F2F2;
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'PT Serif', serif;
       font-size: 16px;
       line-height: 1.5;
       color: #444444;
@@ -115,26 +115,26 @@
 
 <body class="body">
   <%- include('../partials/panel_header.ejs') %>
-    <main id="main" class="main">
-      <div class="div1">
-        <p class="line"> TAG: <span class="par">
-            <%= snippet.tag %>
-          </span> </p>
-        <pre class="snippet"> <%= snippet.snippet %> </pre>
-        <p class="line"> Title: <span style="text-transform:uppercase">
-            <%= snippet.title %>
-          </span> </p>
-        <p class="line"> Author: <span style="text-transform:uppercase">
-            <%= snippet.author %>
-          </span> </p>
-        <p class="line"> Created At: <span style="text-transform:uppercase">
-            <%= snippet.createdAt %>
-          </span> </p>
-        <p class="line"> Updated At: <span style="text-transform:uppercase">
-            <%= snippet.updatedAt %>
-          </span> </p>
-      </div>
-    </main>
+  <main id="main" class="main">
+    <div class="div1">
+      <p class="line"> TAG: <span class="par">
+          <%= snippet.tag %>
+        </span> </p>
+      <pre class="snippet"> <%= snippet.snippet %> </pre>
+      <p class="line"> Title: <span style="text-transform:uppercase">
+          <%= snippet.title %>
+        </span> </p>
+      <p class="line"> Author: <span style="text-transform:uppercase">
+          <%= snippet.author %>
+        </span> </p>
+      <p class="line"> Created At: <span>
+          <%= new Date(snippet.createdAt).toLocaleString() %>
+        </span> </p>
+      <p class="line"> Updated At: <span>
+          <%= new Date(snippet.updatedAt).toLocaleString() %>
+        </span> </p>
+    </div>
+  </main>
 </body>
 
 </html>

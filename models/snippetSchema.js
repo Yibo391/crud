@@ -10,8 +10,7 @@ const sinppetSchema = new Schema({
   },
   title: {
     type: String,
-    required: true,
-    uppercase: true
+    required: true
   },
   author: {
     type: String,

@@ -2,113 +2,112 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Web site created using create-snowpack-app" />
-    <!-- <link rel="stylesheet" type="text/css" href="css/index.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Web site created using create-snowpack-app" />
+  <!-- <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link rel="stylesheet" href="css/html.css">
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/style_form.css">
     <link rel="stylesheet" href="css/html.css"> -->
-    <title>Add Snippet</title>
-    <style>
-        /* Style for the body */
-        body {
-            font-family: 'PT Serif', serif;
-            background-color: #f2f2f2;
-        }
+  <title>Add Snippet</title>
+  <style>
+    /* Style for the body */
+    body {
+      font-family: 'PT Serif', serif;
+      background-color: #f2f2f2;
+      margin: 0;
+    }
 
-        /* Style for the main section */
-        .sec2 {
-            margin: 0 auto;
-            max-width: 800px;
-            padding: 40px 20px;
-        }
+    /* Style for the main section */
+    .sec2 {
+      margin: 0 auto;
+      max-width: 800px;
+      padding: 40px 20px;
+    }
 
-        /* Style for the form section */
-        .sec3 {
-            margin-bottom: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+    /* Style for the form section */
+    .sec3 {
+      margin-bottom: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
 
-        /* Style for the form inputs */
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 16px;
-            font-weight: bold;
-        }
+    /* Style for the form inputs */
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 16px;
+      font-weight: bold;
+    }
 
-        input[type="text"],
-        input[type="title"],
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            border: none;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            font-size: 16px;
-        }
+    input[type="text"],
+    input[type="title"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: none;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      font-size: 16px;
+    }
 
-        textarea {
-            resize: none;
-        }
+    textarea {
+      resize: none;
+    }
 
-        input[type="submit"] {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
+    input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
 
-        input[type="submit"]:hover {
-            background-color: #0062cc;
-        }
+    input[type="submit"]:hover {
+      background-color: #0062cc;
+    }
 
-        /* Style for the form error message */
-        .error-message {
-            color: red;
-            margin-bottom: 10px;
-        }
+    /* Style for the form error message */
+    .error-message {
+      color: red;
+      margin-bottom: 10px;
+    }
 
-        /* Style for the form success message */
-        .success-message {
-            color: green;
-            margin-bottom: 10px;
-        }
-    </style>
+    /* Style for the form success message */
+    .success-message {
+      color: green;
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 
 <body>
-    <%- include('../partials/panel_header.ejs') %>
-        <main class="sec2">
+  <%- include('../partials/panel_header.ejs') %>
+  <main class="sec2">
 
-            <section class="sec3">
-                <h2>Snippet:</h2>
-                <form action="/add-snippet" method="POST">
-                    <label for="tag">Tag:</label><br>
-                    <input type="text" id="tag" name="tag" placeholder="Write a TAG: JavaScript, Java, Python, C#."
-                        required><br>
-                    <label for="title">Title:</label><br>
-                    <input type="title" id="title" name="title" placeholder="Title" required><br>
-                    <br>
-                    <textarea id="snippet" name="snippet" rows="12" cols="50" placeholder="Write your snippet here...."
-                        required></textarea>
-                    <br />
-                    <input type="hidden" name="_csrf" value="<%= csrfTocken %>"><br>
-                    <input type="submit" value="Add"><br>
-                </form>
-            </section>
-        </main>
+    <section class="sec3">
+      <h2>Snippet:</h2>
+      <form action="/add-snippet" method="POST">
+        <label for="tag">Tag:</label><br>
+        <input type="text" id="tag" name="tag" placeholder="Write a TAG: JavaScript, Java, Python, C#." required><br>
+        <label for="title">Title:</label><br>
+        <input type="title" id="title" name="title" placeholder="Title" required><br>
+        <br>
+        <textarea id="snippet" name="snippet" rows="12" cols="50" placeholder="Write your snippet here...." required></textarea>
+        <br />
+        <input type="hidden" name="_csrf" value="<%= csrfTocken %>"><br>
+        <input type="submit" value="Add"><br>
+      </form>
+    </section>
+  </main>
 
 </body>
 

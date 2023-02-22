@@ -13,9 +13,9 @@ exports.connect = connect
  * @returns {object} DB connection.
  */
 async function connect () {
-  mong.connection.on('connected', () => console.log('DB is good to go! It is connected!'))
-  mong.connection.on('error', () => console.log('There is an error!'))
-  mong.connection.on('disconnected', () => console.log('DB id disconnected!'))
+  mong.connection.on('connected', () => console.log('Running'))
+  mong.connection.on('error', () => console.log('ERROR'))
+  mong.connection.on('disconnected', () => console.log('DISCONNECT'))
 
   process.on('SIGNIN', () => {
     mong.connection.close(() => {

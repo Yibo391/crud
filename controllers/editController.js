@@ -1,49 +1,58 @@
 /**
- * @author Jacob Yousif
- * A controller for the edit form.
+ * @author Ahmed Saad
+ * A controller for editing snippets.
  */
 
 'use strict'
 
-const editController = {}
 const Snippet = require('../models/snippetSchema')
 
+const editController = {}
+
 /**
- * This method it responds to the GET request when
- * the user wants to edit a snippet.
- * It renders the edit form.
+ * Render the snippet edit form.
  *
- * @param {object} req the Express request.
- * @param {object} res the Express response.
+ * @param {object} req - The Express request object.
+ * @param {object} res - The Express response object.
+ * @returns {Promise<void>}
  */
 editController.get = async (req, res) => {
   try {
     const id = req.params.id
     const snippet = await Snippet.findById(id)
-    if (typeof req.session !== 'undefined' && req.session.isAuth && req.session.userID.equals(snippet.ownerID)) {
-      res.render('edit/edit', { snippet: snippet, csrfTocken: req.csrfToken() })
+    const { session } = req
+    const isAuthenticated = Boolean(session) && Boolean(session.isAuth)
+
+    if (isAuthenticated && session.userID.equals(snippet.ownerID)) {
+      res.render('edit/edit', {
+        snippet,
+        csrfTocken: req.csrfToken()
+      })
     } else {
       res.status(403)
       await res.render('forbidden/forbidden')
     }
   } catch (error) {
-    console.log(error)
+    console.error(error)
+    res.status(500).send('Internal Server Error')
   }
 }
 
 /**
- * This method it responds to the POST request when
- * the user wants to edit a snippet.
- * It updates the snippet and saves it in the DB.
+ * Update the snippet in the database.
  *
- * @param {object} req the Express request.
- * @param {object} res the Express response.
+ * @param {object} req - The Express request object.
+ * @param {object} res - The Express response object.
+ * @returns {Promise<void>}
  */
 editController.post = async (req, res) => {
   try {
     const id = req.params.id
     const snippet = await Snippet.findById(id)
-    if (typeof req.session !== 'undefined' && req.session.isAuth && req.session.userID.equals(snippet.ownerID)) {
+    const { session } = req
+    const isAuthenticated = Boolean(session) && Boolean(session.isAuth)
+
+    if (isAuthenticated && session.userID.equals(snippet.ownerID)) {
       await Snippet.findByIdAndUpdate(id, req.body)
       res.redirect('/')
     } else {
@@ -51,7 +60,8 @@ editController.post = async (req, res) => {
       await res.render('forbidden/forbidden')
     }
   } catch (error) {
-    console.log(error)
+    console.error(error)
+    res.status(500).send('Internal Server Error')
   }
 }
 

@@ -1,7 +1,11 @@
-<form class="form" action="/search">
-    <input type="text" placeholder="Search by Tag" name="term">
-    <button class="btn" type="submit"><i class="fa fa-search">SEARCH</i></button>
-</form>
+<div style="display: flex; justify-content: center; align-items: center;">
+    <form class="form" action="/search" id="a">
+        <input type="text" placeholder="Search by Tag" name="term">
+        <button class="btn" type="submit">search</button>
+    </form>
+</div>
+
+
 <style>
     /* Style for the header */
     .header {
@@ -64,5 +68,9 @@
 
     button.btn:hover {
         background-color: #357d3a;
+    }
+
+    #a {
+        margin: 10px;
     }
 </style>

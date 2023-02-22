@@ -2,125 +2,127 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/index.css" />
   <link rel="stylesheet" href="css/html.css">
   <link rel="stylesheet" href="css/html.css">
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/bar.css"> -->
-    <style>
-        /* index.css */
+  <style>
+    /* index.css */
 
-        /* Body */
-        .body {
-            background-color: #f8f8f8;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+    /* Body */
+    .body {
+      background-color: #f8f8f8;
+      font-family: 'PT Serif', serif;
+      margin: 0;
 
-        /* Main */
-        .main {
-            width: 80%;
-            margin: auto;
-            padding: 50px 0;
-        }
+    }
 
-        /* Headline */
-        .headline {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 30px;
-        }
+    /* Main */
+    .main {
+      width: 80%;
+      margin: auto;
+      padding: 50px 0;
+    }
 
-        /* Snippet Div */
-        .div1 {
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-            padding: 20px;
-        }
+    /* Headline */
+    .headline {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
 
-        /* Snippet Tag */
-        .par {
-            background-color: #4caf50;
-            border-radius: 5px;
-            color: #fff;
-            font-weight: bold;
-            padding: 5px;
-            margin-right: 10px;
-        }
+    /* Snippet Div */
+    .div1 {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+      padding: 20px;
+    }
 
-        /* Snippet Title */
-        .line {
-            font-size: 20px;
-            margin: 0;
-            margin-bottom: 10px;
-        }
+    /* Snippet Tag */
+    .par {
+      background-color: #4caf50;
+      border-radius: 5px;
+      color: #fff;
+      font-weight: bold;
+      padding: 5px;
+      margin-right: 10px;
+    }
 
-        .line span {
-            font-weight: normal;
-            font-size: 18px;
-        }
+    /* Snippet Title */
+    .line {
+      font-size: 20px;
+      margin: 0;
+      margin-bottom: 10px;
+    }
 
-        .line span:last-child {
-            margin-right: 0;
-        }
+    .line span {
+      font-weight: normal;
+      font-size: 18px;
+    }
 
-        .line span:not(:last-child)::after {
-            content: "|";
-            margin-right: 10px;
-        }
+    .line span:last-child {
+      margin-right: 0;
+    }
 
-        .snippet {
-            background-color: #f8f8f8;
-            border: 1px solid #dcdcdc;
-            border-radius: 5px;
-            font-family: Consolas, Monaco, 'Andale Mono', monospace;
-            font-size: 16px;
-            margin: 20px 0;
-            padding: 20px;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-    </style>
-    <title>Home</title>
+    .line span:not(:last-child)::after {
+      content: "|";
+      margin-right: 10px;
+    }
+
+    .snippet {
+      background-color: #f8f8f8;
+      border: 1px solid #dcdcdc;
+      border-radius: 5px;
+      font-family: Consolas, Monaco, 'Andale Mono', monospace;
+      font-size: 16px;
+      margin: 20px 0;
+      padding: 20px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  </style>
+  <title>Home</title>
 </head>
 
 <body class="body">
-    <%- include('../partials/header.ejs') %>
+  <%- include('../partials/header.ejs') %>
 
-        <main id="main" class="main">
-            <h2 class="headline">Snippets</h2>
-            <% if (result.length> 0) { %>
-                <%- include('../partials/tag.ejs') %>
-                    <% result.forEach(snippet=> { %>
-                        <div class="div1">
-                            <p class="line"> TAG: <span class="par">
-                                    <%= snippet.tag %>
-                                </span> </p>
-                            <pre class="snippet"> <%= snippet.snippet %> </pre>
-                            <p class="line"> Title123: <span style="text-transform:uppercase">
-                                    <%= snippet.title %>
-                                </span> </p>
-                            <p class="line"> Author: <span style="text-transform:uppercase">
-                                    <%= snippet.author %>
-                                </span> </p>
-                            <p class="line"> Created At: <span style="text-transform:uppercase">
-                                    <%= snippet.createdAt %>
-                                </span> </p>
-                            <p class="line"> Updated At: <span style="text-transform:uppercase">
-                                    <%= snippet.updatedAt %>
-                                </span> </p>
-                        </div>
-                        <% }) %>
-                            <% } else { %>
-                                <div class="div1">
-                                    <p class="line"> There are no snippets at this time!</p>
-                                </div>
-                                <% } %>
-        </main>
+  <main id="main" class="main">
+    <h2 class="headline">Snippets</h2>
+    <% if (result.length> 0) { %>
+    <%- include('../partials/tag.ejs') %>
+    <% result.forEach(snippet=> { %>
+    <div class="div1">
+      <p class="line"> TAG: <span class="par">
+          <%= snippet.tag %>
+        </span> </p>
+      <pre class="snippet"> <%= snippet.snippet %> </pre>
+      <p class="line"> Title123: <span style="text-transform:uppercase">
+          <%= snippet.title %>
+        </span> </p>
+      <p class="line"> Author: <span style="text-transform:uppercase">
+          <%= snippet.author %>
+        </span> </p>
+      <p class="line"> Created At: <span>
+          <%= new Date(snippet.createdAt).toLocaleString() %>
+        </span> </p>
+      <p class="line"> Updated At: <span>
+          <%= new Date(snippet.updatedAt).toLocaleString() %>
+        </span> </p>
+    </div>
+    <% }) %>
+    <% } else { %>
+    <div class="div1">
+      <p class="line"> There are no snippets at this time!</p>
+    </div>
+    <% } %>
+  </main>
 
 </body>
 

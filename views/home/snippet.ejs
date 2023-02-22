@@ -2,155 +2,180 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-        /* index.css */
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* index.css */
 
-        /* Global styles */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    /* Global styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-        }
+    body {
+      font-family: 'PT Serif', serif;
+    }
 
-        /* Header styles */
-        header {
-            background-color: #333;
-            color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-        }
+    /* Header styles */
+    header {
+      background-color: #333;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
 
-        header h1 {
-            font-size: 28px;
-        }
+    header h1 {
+      font-size: 28px;
+    }
 
-        header a {
-            color: #fff;
-            text-decoration: none;
-            margin-right: 20px;
-        }
+    header a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 20px;
+    }
 
-        /* Main styles */
-        .main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    /* Main styles */
+    .main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
 
-        .headline {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
+    .headline {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
 
-        .single {
-            display: block;
-            background-color: #f0f0f0;
-            margin-bottom: 20px;
-            padding: 20px;
-            text-decoration: none;
-            color: #000;
-        }
+    .single {
+      display: block;
+      padding: 20px;
+      text-decoration: none;
+      color: #000;
+    }
 
-        .div1 {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+    .div1 {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
 
-        .line {
-            margin-bottom: 10px;
-        }
+    .line {
+      margin-bottom: 10px;
+    }
 
-        .snippet {
-            background-color: #fff;
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-            white-space: pre-wrap;
-            overflow-wrap: break-word;
-        }
+    .snippet {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+    }
 
-        .par {
-            color: blue;
-            font-weight: bold;
-            margin-right: 5px;
-        }
+    .par {
+      color: blue;
+      font-weight: bold;
+      margin-right: 5px;
+    }
 
-        /* Tag styles */
-        .tag {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
+    /* Tag styles */
+    .tag {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
 
-        .tag button {
-            background-color: #333;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            margin-right: 10px;
-            cursor: pointer;
-        }
+    .tag button {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
 
-        .tag button:hover {
-            background-color: #555;
-        }
+    .tag button:hover {
+      background-color: #555;
+    }
 
-        .tag .active {
-            background-color: #555;
-        }
-    </style>
-    <title>Snippet</title>
+    .tag .active {
+      background-color: #555;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .button-container button {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    .button-container button:hover {
+      background-color: #555;
+    }
+
+    .button-container .single {
+      text-decoration: none;
+    }
+  </style>
+  <title>Snippet</title>
 </head>
 
 <body class="body">
-    <%- include('../partials/panel_header.ejs') %>
-        <main id="main" class="main">
-            <div>
-                <a class="single" href="/edit/<%= snippet._id %>">
-                    <button id="edit_btn" class="btn1" data-doc="<%= snippet._id %>"><span>Edit </span></button></a>
-                <button id="delete_btn" class="btn1" data-doc="<%= snippet._id %>"><span>Delete </span></button>
-            </div>
-            <div class="div1">
-                <p class="line"> TAG: <span class="par">
-                        <%= snippet.tag %>
-                    </span> </p>
-                <pre class="snippet"> <%= snippet.snippet %> </pre>
-                <p class="line"> Title: <span style="text-transform:uppercase">
-                        <%= snippet.title %>
-                    </span> </p>
-                <p class="line"> Author: <span style="text-transform:uppercase">
-                        <%= snippet.author %>
-                    </span> </p>
-                <p class="line"> Created At: <span style="text-transform:uppercase">
-                        <%= snippet.createdAt %>
-                    </span> </p>
-                <p class="line"> Updated At: <span style="text-transform:uppercase">
-                        <%= snippet.updatedAt %>
-                    </span> </p>
-            </div>
-        </main>
-        <script>
-            const delete_btn = document.getElementById('delete_btn')
-            const endpoint = `/snippets/${delete_btn.dataset.doc}`
-            delete_btn.addEventListener('click', (e) => {
-                fetch(endpoint, {
-                    method: 'DELETE'
-                })
-                    .then((res) => res.json())
-                    .then((data) => window.location.href = data.redirect)
-                    .catch((err) => console.log(err))
-            })
-        </script>
+  <%- include('../partials/panel_header.ejs') %>
+  <main id="main" class="main">
+    <div class="button-container">
+      <a class="single" href="/edit/<%= snippet._id %>">
+        <button id="edit_btn" class="btn1" data-doc="<%= snippet._id %>"><span>Edit </span></button>
+      </a>
+      <button id="delete_btn" class="btn1" data-doc="<%= snippet._id %>"><span>Delete </span></button>
+    </div>
+
+    <div class="div1">
+      <p class="line"> TAG: <span class="par">
+          <%= snippet.tag %>
+        </span> </p>
+      <pre class="snippet"> <%= snippet.snippet %> </pre>
+      <p class="line"> Title: <span style="text-transform:uppercase">
+          <%= snippet.title %>
+        </span> </p>
+      <p class="line"> Author: <span style="text-transform:uppercase">
+          <%= snippet.author %>
+        </span> </p>
+      <p class="line"> Created At: <span>
+          <%= new Date(snippet.createdAt).toLocaleString() %>
+        </span> </p>
+      <p class="line"> Updated At: <span>
+          <%= new Date(snippet.updatedAt).toLocaleString() %>
+        </span> </p>
+    </div>
+  </main>
+  <script>
+    const delete_btn = document.getElementById('delete_btn')
+    const endpoint = `/snippets/${delete_btn.dataset.doc}`
+    delete_btn.addEventListener('click', (e) => {
+      fetch(endpoint, {
+          method: 'DELETE'
+        })
+        .then((res) => res.json())
+        .then((data) => window.location.href = data.redirect)
+        .catch((err) => console.log(err))
+    })
+  </script>
 
 </body>
 

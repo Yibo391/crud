@@ -1,40 +1,35 @@
 <div class="header">
-    <div class="items">
-        <a href="/signout">Signout</a>
-        <a href="/add-snippet">Add Snippets</a>
-        <a href="/">Home</a>
-    </div>
+  <div class="items">
+    <a href="/signout">Signout</a>
+    <a href="/add-snippet">Add Snippets</a>
+    <a href="/">Home</a>
+  </div>
 </div>
 <style>
-    /* Style for the header */
-    .header {
-        background-color: #333;
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-    }
+  .header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+  }
 
-    /* Style for the header links */
-    .header a {
-        color: #fff;
-        text-decoration: none;
-        margin: 0 10px;
-        font-size: 18px;
-    }
+  .items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
 
-    /* Style for the active link */
-    .header a.active {
-        font-weight: bold;
-    }
+  .items a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 10px;
+    border-radius: 5px;
+  }
 
-    /* Style for the header on mobile devices */
-    @media (max-width: 600px) {
-        .header {
-            padding: 20px;
-        }
-
-        .header a {
-            font-size: 14px;
-        }
-    }
+  .items a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
 </style>
