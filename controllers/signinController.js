@@ -14,12 +14,13 @@ const signinController = {}
  */
 signinController.get = async (req, res) => {
   const message = req.flash('message')
-  if (typeof req.session === 'undefined' || !req.session.isAuth) {
-    delete req.session.message
-    res.render('signin/signin', { message, csrfTocken: req.csrfToken() })
-  } else {
-    res.redirect('/snippets')
+
+  if (req.session?.isAuth) {
+    return res.redirect('/snippets')
   }
+
+  delete req.session.message
+  res.render('signin/signin', { message, csrfTocken: req.csrfToken() })
 }
 
 /**
@@ -33,19 +34,24 @@ signinController.post = async (req, res) => {
   try {
     const { email, password } = req.body
     const user = await User.findOne({ email })
+    let message = ''
+
     if (!user) {
-      await req.flash('message', 'The user does not exist!')
-      return res.redirect('/sign-in')
+      message = 'The user does not exist!'
+    } else {
+      const isMatch = await bcrypt.compare(password, user.password)
+      if (!isMatch) {
+        message = 'The password does not match!'
+      } else {
+        req.session.isAuth = true
+        req.session.userID = user._id
+        req.session.username = user.name
+        return res.redirect('/snippets')
+      }
     }
-    const isMatch = await bcrypt.compare(password, user.password)
-    if (!isMatch) {
-      await req.flash('message', 'The password does not match!')
-      return res.redirect('/sign-in')
-    }
-    req.session.isAuth = true
-    req.session.userID = user._id
-    req.session.username = user.name
-    res.redirect('/snippets')
+
+    await req.flash('message', message)
+    res.redirect('/sign-in')
   } catch (error) {
     console.log(error)
   }

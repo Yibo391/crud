@@ -1,8 +1,3 @@
-/**
- * @author Ahmed Saad
- * A controller for editing snippets.
- */
-
 'use strict'
 
 const Snippet = require('../models/snippetSchema')
