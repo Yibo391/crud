@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-import bcrypt from 'bcrypt';
-import User from '../models/userSchema.mjs';
+import bcrypt from 'bcrypt'
+import User from '../models/userSchema.mjs'
 
-const signinController = {};
+const signinController = {}
 
 /**
  * This method responds to the GET request when the user wants to sign in.
@@ -13,15 +13,15 @@ const signinController = {};
  * @param {object} res The Express response.
  */
 signinController.get = async (req, res) => {
-  const message = req.flash('message');
+  const message = req.flash('message')
 
   if (req.session?.isAuth) {
-    return res.redirect('/snippets');
+    return res.redirect('/snippets')
   }
 
-  delete req.session.message;
-  res.render('signin/signin', { message, csrfTocken: req.csrfToken() });
-};
+  delete req.session.message
+  res.render('signin/signin', { message, csrfTocken: req.csrfToken() })
+}
 
 /**
  * This method responds to the POST request when the user wants to submit for authentications for signin.
@@ -32,29 +32,29 @@ signinController.get = async (req, res) => {
  */
 signinController.post = async (req, res) => {
   try {
-    const { email, password } = req.body;
-    const user = await User.findOne({ email });
-    let message = '';
+    const { email, password } = req.body
+    const user = await User.findOne({ email })
+    let message = ''
 
     if (!user) {
-      message = 'The user does not exist!';
+      message = 'The user does not exist!'
     } else {
-      const isMatch = await bcrypt.compare(password, user.password);
+      const isMatch = await bcrypt.compare(password, user.password)
       if (!isMatch) {
-        message = 'The password does not match!';
+        message = 'The password does not match!'
       } else {
-        req.session.isAuth = true;
-        req.session.userID = user._id;
-        req.session.username = user.name;
-        return res.redirect('/snippets');
+        req.session.isAuth = true
+        req.session.userID = user._id
+        req.session.username = user.name
+        return res.redirect('/snippets')
       }
     }
 
-    await req.flash('message', message);
-    res.redirect('/sign-in');
+    await req.flash('message', message)
+    res.redirect('/sign-in')
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
-export default signinController;
+export default signinController

@@ -1,4 +1,4 @@
-import Snippet from '../models/snippetSchema.mjs';
+import Snippet from '../models/snippetSchema.mjs'
 
 const searchController = {}
 

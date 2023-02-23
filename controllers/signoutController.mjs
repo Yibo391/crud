@@ -3,7 +3,6 @@
 const signoutController = {}
 
 /**
- 
 Responds to the GET request when the user wants to sign out.
  *
 @param {object} req The Express request.

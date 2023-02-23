@@ -28,8 +28,7 @@ validator.isPassword = (password) => {
 /**
  * It checks whether the provided input has the characteristics of a name.
  *
- * @param {string} someName the input.
- * @param name
+ * @param {string} name the input.
  * @returns {boolean} whether it is a name.
  */
 validator.isName = (name) => {
