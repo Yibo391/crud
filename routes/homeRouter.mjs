@@ -7,9 +7,9 @@ const router = express.Router()
  * The routes for the home.
  */
 router
-  .get('/', controller.index)
-  .get('/snippets', controller.index)
-  .get('/snippets/:id', controller.indexGetSnippet)
-  .delete('/snippets/:id', controller.indexDeleteSnippet)
+  .get('/', controller.h)
+  .get('/snippets', controller.h)
+  .get('/snippets/:id', controller.get)
+  .delete('/snippets/:id', controller.delete)
 
 export default router

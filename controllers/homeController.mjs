@@ -2,7 +2,7 @@ import Snippet from '../models/snippetSchema.mjs'
 
 const homeController = {}
 
-homeController.index = async (req, res) => {
+homeController.h = async (req, res) => {
   try {
     const result = await Snippet.find()
     const isAuth = req.session?.isAuth || false
@@ -14,7 +14,7 @@ homeController.index = async (req, res) => {
   }
 }
 
-homeController.indexGetSnippet = async (req, res) => {
+homeController.get = async (req, res) => {
   try {
     const id = req.params.id
     const isAuth = req.session?.isAuth || false
@@ -44,11 +44,10 @@ homeController.indexGetSnippet = async (req, res) => {
   }
 }
 
-homeController.indexDeleteSnippet = async (req, res) => {
+homeController.delete = async (req, res) => {
   try {
     console.log('new1')
     const id = req.params.id
-    const isAuth = req.session?.isAuth || false
     const userID = req.session?.userID
 
     const errorPages = {
