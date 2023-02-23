@@ -45,7 +45,6 @@ addController.get = async (req, res) => {
  * @param {object} res The Express response.
  */
 addController.post = async (req, res) => {
-  console.log(1)
   try {
     if (typeof req.session === 'undefined' || !req.session.isAuth) {
       res.status(403)

@@ -2,7 +2,7 @@
 
 import bcrypt from 'bcrypt'
 import User from '../models/userSchema.mjs'
-import validator from './validator.mjs'
+import validator from './validation.mjs'
 
 const signupController = {}
 

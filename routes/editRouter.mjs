@@ -1,5 +1,5 @@
 import express from 'express'
-import controller from '../controllers/editController.mjs'
+import controller from '../controllers/edit.mjs'
 import csrf from 'csurf'
 
 const router = express.Router()
