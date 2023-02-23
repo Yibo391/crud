@@ -1,7 +1,7 @@
+import express from 'express'
+import controller from '../controllers/homeController.mjs'
 
-const express = require('express')
 const router = express.Router()
-const controller = require('../controllers/homeController')
 
 /**
  * The routes for the home.
@@ -12,4 +12,4 @@ router
   .get('/snippets/:id', controller.indexGetSnippet)
   .delete('/snippets/:id', controller.indexDeleteSnippet)
 
-module.exports = router
+export default router

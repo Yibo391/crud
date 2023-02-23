@@ -1,6 +1,4 @@
-'use strict'
-
-const Snippet = require('../models/snippetSchema')
+import Snippet from '../models/snippetSchema.mjs'
 
 const homeController = {}
 
@@ -50,7 +48,6 @@ homeController.indexDeleteSnippet = async (req, res) => {
   try {
     console.log('new1')
     const id = req.params.id
-    // eslint-disable-next-line no-unused-vars
     const isAuth = req.session?.isAuth || false
     const userID = req.session?.userID
 
@@ -78,4 +75,4 @@ homeController.indexDeleteSnippet = async (req, res) => {
   }
 }
 
-module.exports = homeController
+export default homeController

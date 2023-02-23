@@ -1,8 +1,8 @@
+import express from 'express'
+import controller from '../controllers/editController.mjs'
+import csrf from 'csurf'
 
-const express = require('express')
 const router = express.Router()
-const controller = require('../controllers/editController')
-const csrf = require('csurf')
 const proc = csrf()
 router.use(proc)
 
@@ -13,4 +13,4 @@ router
   .get('/edit/:id', controller.get)
   .post('/edit/:id', controller.post)
 
-module.exports = router
+export default router

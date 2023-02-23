@@ -37,4 +37,4 @@ validator.isName = (name) => {
   return nameRegex.test(name)
 }
 
-module.exports = validator
+export default validator

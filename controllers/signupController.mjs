@@ -1,9 +1,10 @@
 'use strict'
 
+import bcrypt from 'bcrypt'
+import User from '../models/userSchema.mjs'
+import validator from './validator.mjs'
+
 const signupController = {}
-const User = require('../models/userSchema')
-const validator = require('./validator')
-const crypt = require('bcrypt')
 
 signupController.get = async (req, res) => {
   const message = req.flash('message')
@@ -44,7 +45,7 @@ signupController.post = async (req, res) => {
       return res.redirect('/sign-up')
     }
 
-    const hashedPassword = await crypt.hash(password, 10)
+    const hashedPassword = await bcrypt.hash(password, 10)
     const newUser = new User({ name, email, password: hashedPassword })
     await newUser.save()
     await req.flash('message', 'Successful Registration! Sign in now with your credentials.')
@@ -54,4 +55,4 @@ signupController.post = async (req, res) => {
   }
 }
 
-module.exports = signupController
+export default signupController

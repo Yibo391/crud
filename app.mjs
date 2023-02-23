@@ -7,14 +7,14 @@ import session from 'express-session'
 import MongoDBSession from 'connect-mongodb-session'
 import path from 'path'
 import logger from 'morgan'
-import home from './routes/homeRouter.js'
-import signup from './routes/signupRouter.js'
-import signin from './routes/signinRouter.js'
-import addSnippet from './routes/addRouter.js'
-import signout from './routes/signoutRouter.js'
-import edit from './routes/editRouter.js'
-import search from './routes/searchRouter.js'
-import mongodb from './mongoose.js'
+import home from './routes/homeRouter.mjs'
+import signup from './routes/signupRouter.mjs'
+import signin from './routes/signinRouter.mjs'
+import addSnippet from './routes/addRouter.mjs'
+import signout from './routes/signoutRouter.mjs'
+import edit from './routes/editRouter.mjs'
+import search from './routes/searchRouter.mjs'
+import connect from './mongoose.mjs'
 import flash from 'connect-flash'
 import { fileURLToPath } from 'url'
 
@@ -25,7 +25,7 @@ const app = express()
 app.use(express.static(path.join(dir, 'public')))
 
 app.set('view engine', 'ejs')
-mongodb.connect().then(() => {}).catch((err) => {
+connect().then(() => {}).catch((err) => {
   console.log(err)
   process.exit(1)
 })

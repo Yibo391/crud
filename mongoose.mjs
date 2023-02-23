@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
 const DB_URL = 'mongodb://root:secret@127.0.0.1/a?authSource=admin'
 
@@ -15,7 +15,10 @@ process.on('SIGINT', () => {
   })
 })
 
-exports.connect = async () => {
+/**
+ *
+ */
+async function connect () {
   try {
     await mongoose.connect(DB_URL, {
       useNewUrlParser: true,
@@ -27,3 +30,5 @@ exports.connect = async () => {
     process.exit(1)
   }
 }
+
+export default connect

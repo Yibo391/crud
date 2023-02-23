@@ -1,6 +1,4 @@
-'use strict'
-
-const Snippet = require('../models/snippetSchema')
+import Snippet from '../models/snippetSchema.mjs'
 
 const editController = {}
 
@@ -60,4 +58,4 @@ editController.post = async (req, res) => {
   }
 }
 
-module.exports = editController
+export default editController

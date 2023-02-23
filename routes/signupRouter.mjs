@@ -1,9 +1,10 @@
+import express from 'express'
+import controller from '../controllers/signupController.mjs'
+import csrf from 'csurf'
 
-const express = require('express')
 const router = express.Router()
-const controller = require('../controllers/signupController')
-const csrf = require('csurf')
 const proc = csrf()
+
 router.use(proc)
 
 /**
@@ -13,4 +14,4 @@ router
   .get('/sign-up', controller.get)
   .post('/sign-up', controller.post)
 
-module.exports = router
+export default router

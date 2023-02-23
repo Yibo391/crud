@@ -1,7 +1,4 @@
-
-'use strict'
-
-const Snippet = require('../models/snippetSchema')
+const Snippet = import('../models/snippetSchema.mjs')
 
 const searchController = {}
 
@@ -26,4 +23,4 @@ searchController.get = async (req, res) => {
   }
 }
 
-module.exports = searchController
+export default searchController

@@ -1,7 +1,8 @@
 'use strict'
 
+import Snippet from '../models/snippetSchema.mjs'
+
 const addController = {}
-const Snippet = require('../models/snippetSchema')
 
 /**
  * This method responds to the GET request when
@@ -74,4 +75,4 @@ addController.post = async (req, res) => {
   }
 }
 
-module.exports = addController
+export default addController
