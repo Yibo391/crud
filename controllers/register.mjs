@@ -23,15 +23,15 @@ signupController.post = async (req, res) => {
   const validationErrors = []
 
   if (!validator.isName(name)) {
-    validationErrors.push('The name should ONLY contain letters!')
+    validationErrors.push('The name does not follow instruction!')
   }
 
   if (!validator.isEmail(email)) {
-    validationErrors.push('The email provided is NOT correct!')
+    validationErrors.push('The email does not follow instruction!')
   }
 
   if (!validator.isPassword(password)) {
-    validationErrors.push('The provided password does NOT fulfill the conditions!')
+    validationErrors.push('The provided password does NOT fulfill the requirment!')
   }
 
   try {
@@ -48,7 +48,7 @@ signupController.post = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10)
     const newUser = new User({ name, email, password: hashedPassword })
     await newUser.save()
-    await req.flash('message', 'Successful Registration! Sign in now with your credentials.')
+    await req.flash('message', 'Successful Registration! Sign in now with your account.')
     res.redirect('/sign-in')
   } catch (error) {
     console.log(error)

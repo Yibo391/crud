@@ -37,11 +37,11 @@ signinController.post = async (req, res) => {
     let message = ''
 
     if (!user) {
-      message = 'The user does not exist!'
+      message = 'No this user!'
     } else {
       const isMatch = await bcrypt.compare(password, user.password)
       if (!isMatch) {
-        message = 'The password does not match!'
+        message = 'Password wrong!'
       } else {
         req.session.isAuth = true
         req.session.userID = user._id
