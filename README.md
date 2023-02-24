@@ -56,3 +56,17 @@ npm start
 ```
 url: localhost:8000
 ```
+
+### environment of mine 
+
+node -v                           INT  %  23:40:08
+v16.19.1
+
+docker --version                  ok | %  23:40:30
+Docker version 20.10.22, build 3a2c30b
+
+docker-compose --version       ok | %  23:41:05
+Docker Compose version v2.15.1
+
+npm -v                     127 err  %  23:41:32
+8.19.3
