@@ -4,7 +4,6 @@ Video
 
 This is a recorded presentation, for stating how it works
 
-[![2023-02-07 en]('click')](https://youtu.be/8Zki-S-kFgE)
 
 
 This is how to get going with the docker installation.
